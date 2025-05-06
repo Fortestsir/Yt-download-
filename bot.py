@@ -1,8 +1,7 @@
-
 import os
 import asyncio
 from pyrogram import Client, filters
-from pyrogram.types import Message
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 import yt_dlp
 
 API_ID = 21070919  # Replace with your API ID
@@ -22,17 +21,25 @@ async def is_joined(client, user_id):
 @app.on_message(filters.command("start"))
 async def start(client, message):
     if not await is_joined(client, message.from_user.id):
-        channel_username = "MalwareReapers"
-await message.reply(f"❌ Pehle @{channel_username} channel join karo fir use karo.")
-    @app.on_message(filters.command("start"))
-async def start(client, message):
+        await message.reply(
+            f"❌ Pehle @{FORCE_JOIN} channel join karo fir use karo.",
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("Join Channel", url=f"https://t.me/{FORCE_JOIN}")]]
+            )
+        )
+        return
+
     await message.reply("👋 Welcome! Send any YouTube link to download video/audio.")
 
 @app.on_message(filters.text & filters.private)
 async def download_video(client, message: Message):
     if not await is_joined(client, message.from_user.id):
-        await message.reply(f"❌ Pehle @{FORCE_JOIN} channel join karo fir use karo.",
-                            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url=f"https://t.me/{MalwareReapers}")]]))
+        await message.reply(
+            f"❌ Pehle @{FORCE_JOIN} channel join karo fir use karo.",
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("Join Channel", url=f"https://t.me/{FORCE_JOIN}")]]
+            )
+        )
         return
 
     url = message.text.strip()
