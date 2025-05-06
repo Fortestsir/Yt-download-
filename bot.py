@@ -5,9 +5,9 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 import yt_dlp
 
-API_ID = 12345678  # Replace with your API ID
-API_HASH = "your_api_hash"  # Replace with your API Hash
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+API_ID = 21070919  # Replace with your API ID
+API_HASH = "1a70e1253cc7009c1bea592d4f62e707"  # Replace with your API Hash
+BOT_TOKEN = "7730974471:AAHfUyJaLWGIUA-mrbfWc9hyFCKpu_GLuPk"
 FORCE_JOIN = "malwareReapers"  # without @
 
 app = Client("yt_download_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
