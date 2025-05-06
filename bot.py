@@ -22,8 +22,8 @@ async def is_joined(client, user_id):
 @app.on_message(filters.command("start"))
 async def start(client, message):
     if not await is_joined(client, message.from_user.id):
-        await message.reply(f"❌ Pehle @{FORCE_JOIN} channel join karo fir use karo.",
-                            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url=f"https://t.me/{FORCE_JOIN}")]]))
+        await message.reply(f"❌ Pehle @{MalwareReapers} channel join karo fir use karo.",
+                            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url=f"https://t.me/{MalwareReapers}")]]))
         return
     await message.reply("👋 Welcome! Send any YouTube link to download video/audio.")
 
@@ -31,7 +31,7 @@ async def start(client, message):
 async def download_video(client, message: Message):
     if not await is_joined(client, message.from_user.id):
         await message.reply(f"❌ Pehle @{FORCE_JOIN} channel join karo fir use karo.",
-                            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url=f"https://t.me/{FORCE_JOIN}")]]))
+                            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url=f"https://t.me/{MalwareReapers}")]]))
         return
 
     url = message.text.strip()
