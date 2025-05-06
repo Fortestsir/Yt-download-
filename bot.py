@@ -4,10 +4,10 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 import yt_dlp
 
-API_ID = 21070919  # Replace with your API ID
-API_HASH = "1a70e1253cc7009c1bea592d4f62e707"  # Replace with your API Hash
+API_ID = 21070919
+API_HASH = "1a70e1253cc7009c1bea592d4f62e707"
 BOT_TOKEN = "7730974471:AAHfUyJaLWGIUA-mrbfWc9hyFCKpu_GLuPk"
-FORCE_JOIN = "malwareReapers"  # without @
+FORCE_JOIN = "malwareReapers"
 
 app = Client("yt_download_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
@@ -15,10 +15,11 @@ async def is_joined(client, user_id):
     try:
         member = await client.get_chat_member(FORCE_JOIN, user_id)
         return member.status in ["member", "administrator", "creator"]
-    except:
+    except Exception as e:
+        print(f"[FORCE JOIN ERROR] {e}")
         return False
 
-@app.on_message(filters.command("start"))
+@app.on_message(filters.command("start") & filters.private)
 async def start(client, message):
     if not await is_joined(client, message.from_user.id):
         await message.reply(
