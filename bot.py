@@ -24,6 +24,8 @@ async def start(client, message):
     if not await is_joined(client, message.from_user.id):
         channel_username = "MalwareReapers"
 await message.reply(f"❌ Pehle @{channel_username} channel join karo fir use karo.")
+    @app.on_message(filters.command("start"))
+async def start(client, message):
     await message.reply("👋 Welcome! Send any YouTube link to download video/audio.")
 
 @app.on_message(filters.text & filters.private)
